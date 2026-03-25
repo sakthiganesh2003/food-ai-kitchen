@@ -5,8 +5,27 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
+// Middleware — Allow Vercel frontend + local dev
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://food-ai-kitchen-git-main-sakthiganesh8098-8836s-projects.vercel.app',
+    /\.vercel\.app$/  // allow all vercel preview deployments
+];
+app.use(cors({
+    origin: (origin, callback) => {
+        // Allow requests with no origin (mobile apps, curl, etc.)
+        if (!origin) return callback(null, true);
+        if (
+            allowedOrigins.some(o =>
+                typeof o === 'string' ? o === origin : o.test(origin)
+            )
+        ) {
+            return callback(null, true);
+        }
+        callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true
+}));
 app.use(express.json());
 
 // Routes
