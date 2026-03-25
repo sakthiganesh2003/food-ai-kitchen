@@ -1,38 +1,47 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+}
+
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
+  --foreground: #1a1510;
+  --primary: #f59e0b; /* Amber */
+  --primary-hover: #d97706;
+  --accent: #ea580c; /* Orange */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0d0b08; /* Very warm dark near-black */
+    --foreground: #e5d9c8; /* Warm cream/zinc text */
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* Glassmorphism Effect */
+/* Warm Glassmorphism Effect */
 .glass {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.15); /* Amber border instead of white */
 }
 
 .dark .glass {
-  background: rgba(15, 15, 15, 0.7);
-  border-color: rgba(255, 255, 255, 0.05);
+  background: rgba(26, 21, 16, 0.7); /* Warm card dark back */
+  border-color: rgba(245, 158, 11, 0.1); 
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Transitions */
@@ -48,3 +57,16 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Custom Selection Color for the new theme */
+::selection {
+  background: rgba(245, 158, 11, 0.3);
+  color: #fff;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+

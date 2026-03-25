@@ -28,31 +28,31 @@ export default function UserHistory() {
     if (isLoading) {
         return (
             <div className="flex justify-center items-center h-48">
-                <div className="animate-spin w-8 h-8 border-4 border-fuchsia-500 border-t-transparent rounded-full"></div>
+                <div className="animate-spin w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full"></div>
             </div>
         );
     }
 
     return (
-        <div className="bg-gray-900/60 backdrop-blur-3xl rounded-[2rem] p-8 border border-gray-800 shadow-2xl">
+        <div className="bg-[#1C1612]/60 backdrop-blur-3xl rounded-[2rem] p-8 border border-[#2D241E] shadow-2xl">
             <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-fuchsia-500/20 to-violet-500/20 border border-fuchsia-500/30 rounded-2xl flex items-center justify-center text-fuchsia-400">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl flex items-center justify-center text-amber-400">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
                 <div>
-                    <h3 className="text-2xl font-black text-white tracking-tight">Your Activity Log</h3>
+                    <h3 className="text-2xl font-heading font-black text-white tracking-tight">Your Activity Log</h3>
                     <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mt-1">Past recipes and interactions</p>
                 </div>
             </div>
 
             {history.length === 0 ? (
-                <div className="text-center py-12 text-gray-500 font-bold italic border-2 border-dashed border-gray-800 rounded-2xl">
+                <div className="text-center py-12 text-gray-500 font-bold italic border-2 border-dashed border-[#2D241E] rounded-2xl">
                     No history found. Try generating a recipe!
                 </div>
             ) : (
                 <div className="space-y-4">
                     {history.map((item, idx) => (
-                        <div key={idx} className="flex flex-col md:flex-row md:items-center justify-between bg-black/50 p-6 rounded-2xl border border-gray-800 hover:border-fuchsia-500/50 transition-all group">
+                        <div key={idx} className="flex flex-col md:flex-row md:items-center justify-between bg-[#0D0B08]/50 p-6 rounded-2xl border border-[#2D241E] hover:border-amber-500/50 transition-all group">
                             <div className="flex items-center gap-4">
                                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.type === 'recipe' ? 'bg-orange-500/10 text-orange-500' : 'bg-blue-500/10 text-blue-500'}`}>
                                     {item.type === 'recipe' ? (
@@ -62,13 +62,13 @@ export default function UserHistory() {
                                     )}
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-bold group-hover:text-fuchsia-400 transition-colors">{item.title || "Unknown Interaction"}</h4>
+                                    <h4 className="text-white font-bold group-hover:text-amber-400 transition-colors">{item.title || "Unknown Interaction"}</h4>
                                     <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1">
                                         {new Date(item.createdAt || item.timestamp).toLocaleString()}
                                     </p>
                                 </div>
                             </div>
-                            <button className="mt-4 md:mt-0 px-6 py-2 bg-gray-800 text-xs font-bold text-white uppercase tracking-widest rounded-xl hover:bg-fuchsia-600 transition-colors">
+                            <button className="mt-4 md:mt-0 px-6 py-2 bg-[#2D241E] text-xs font-bold text-white uppercase tracking-widest rounded-xl hover:bg-amber-600 transition-colors">
                                 View Details
                             </button>
                         </div>
