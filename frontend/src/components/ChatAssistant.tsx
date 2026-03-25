@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import API_BASE_URL from '@/lib/api';
 
 interface Message {
     id: string;
@@ -40,7 +41,7 @@ const ChatPage: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/chat/ask', {
+            const response = await fetch(`${API_BASE_URL}/api/chat/ask`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

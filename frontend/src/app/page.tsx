@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import API_BASE_URL from '@/lib/api';
 import IngredientAI from '@/components/IngredientAI';
 import ChatAssistant from '@/components/ChatAssistant';
 import AdminDashboard from '@/components/AdminDashboard';
@@ -32,7 +33,7 @@ export default function Home() {
         setIsLoading(true);
         const endpoint = isSignUp ? '/api/auth/register' : '/api/auth/login';
         try {
-            const res = await fetch(`http://localhost:5000${endpoint}`, {
+            const res = await fetch(`${API_BASE_URL}${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: tempEmail, password })

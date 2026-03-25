@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '@/lib/api';
 
 export default function AdminDashboard() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,7 +16,7 @@ export default function AdminDashboard() {
         if (isLoggedIn) {
             const token = localStorage.getItem('token') || 'dummy_token_for_now';
             
-            fetch('http://localhost:5000/api/admin/users', { 
+            fetch(`${API_BASE_URL}/api/admin/users`, { 
                 headers: { 'Authorization': `Bearer ${token}` } 
             })
             .then(res => res.json())
@@ -24,7 +25,7 @@ export default function AdminDashboard() {
             })
             .catch(console.error);
 
-            fetch('http://localhost:5000/api/admin/history', { 
+            fetch(`${API_BASE_URL}/api/admin/history`, { 
                 headers: { 'Authorization': `Bearer ${token}` } 
             })
             .then(res => res.json())

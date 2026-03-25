@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '@/lib/api';
 
 export default function UserHistory() {
     const [history, setHistory] = useState<any[]>([]);
@@ -8,7 +9,7 @@ export default function UserHistory() {
 
     useEffect(() => {
         const token = localStorage.getItem('token') || 'dummy_token';
-        fetch('http://localhost:5000/api/history', {
+        fetch(`${API_BASE_URL}/api/history`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
         .then(res => res.json())

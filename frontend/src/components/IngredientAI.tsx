@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import API_BASE_URL from '@/lib/api';
 import IngredientInput from './IngredientInput';
 import RecipeDisplay from './RecipeDisplay';
 
@@ -64,7 +65,7 @@ const IngredientAI: React.FC = () => {
         setTitles(null);
         
         try {
-            const response = await fetch('http://localhost:5000/api/ai/titles', {
+            const response = await fetch(`${API_BASE_URL}/api/ai/titles`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ingredients, preferences })
@@ -87,7 +88,7 @@ const IngredientAI: React.FC = () => {
         setIsLoading(true);
         
         try {
-            const response = await fetch('http://localhost:5000/api/ai/recipe', {
+            const response = await fetch(`${API_BASE_URL}/api/ai/recipe`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ingredients, title, preferences })
