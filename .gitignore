@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+frontend-full/
+old-frontend/
+
+# Environment Variables (NEVER commit these!)
+.env
+.env.local
+.env.production
+
+# Firebase Service Account (contains private keys!)
+chatbotai-firebase-adminsdk.json
+*-firebase-adminsdk*.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build outputs
+frontend/.next/
+frontend/out/
+.next/
+out/
+dist/
+build/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Test files (optional - remove if you want to keep them)
+test-ai.js
+test-ai-client.js
+test-models.js
+list-models.js
