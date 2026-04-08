@@ -61,11 +61,18 @@ app.use((req, res) => {
     res.status(404).json({ error: "Route not found." });
 });
 
-app.listen(PORT, () => {
-    console.log(`\n================================`);
-    console.log(`🚀 Bot is running at: http://localhost:${PORT}`);
-    console.log(`📁 Modules loaded: /modules/ingredient-ai/routes`);
-    console.log(`🛠️ Health check: http://localhost:${PORT}/health`);
-    console.log(`📥 API endpoint: POST http://localhost:${PORT}/api/ai/ingredients`);
-    console.log(`================================\n`);
-});
+// Export the app for Vercel
+module.exports = app;
+
+// Listen only if running directly
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`\n================================`);
+        console.log(`🚀 Bot is running at: http://localhost:${PORT}`);
+        console.log(`📁 Modules loaded: /modules/ingredient-ai/routes`);
+        console.log(`🛠️ Health check: http://localhost:${PORT}/health`);
+        console.log(`📥 API endpoint: POST http://localhost:${PORT}/api/ai/ingredients`);
+        console.log(`================================\n`);
+    });
+}
+
