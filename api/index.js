@@ -51,8 +51,8 @@ app.get('/health', (req, res) => {
     res.status(200).json({ status: "ok", message: "Food AI Kitchen Server Running" });
 });
 
-// Root route
-app.get('/', (req, res) => {
+// API Root
+app.get('/api', (req, res) => {
     res.send("<h1>🤖 Ingredient AI - Backend API</h1><p>Running on PORT: " + PORT + "</p>");
 });
 
