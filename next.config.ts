@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+    turbopack: {
+        root: process.cwd(),
+    },
     async rewrites() {
         return [
             {
                 source: '/api/:path*',
-                destination: '/api', // Correctly maps to the api/index.js function on Vercel
-            },
-            {
-                source: '/health',
-                destination: '/api/index.js',
+                destination: '/api/:path*',
             }
         ];
     },

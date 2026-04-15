@@ -56,9 +56,9 @@ app.get('/api', (req, res) => {
     res.send("<h1>🤖 Ingredient AI - Backend API</h1><p>Running on PORT: " + PORT + "</p>");
 });
 
-// 404 Error handler
-app.use((req, res) => {
-    res.status(404).json({ error: "Route not found." });
+// 404 Error handler — only for /api routes
+app.use('/api', (req, res) => {
+    res.status(404).json({ error: "API route not found." });
 });
 
 // Export the app for Vercel
